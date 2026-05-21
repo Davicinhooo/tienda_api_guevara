@@ -11,9 +11,11 @@ class Products extends Model
     /** @use HasFactory<\Database\Factories\ProductsFactory> */
     use HasFactory;
 
-    public function category(){
-        return $this->belongsTo(Orders::class,"orders_id");
+    public function Category(){
         return $this->belongsTo(Category::class,"categories_id");
-        
+    }
+
+    public function Orders(){
+        return $this->belongsTo(Orders::class,"orders_id");
     }
 }

@@ -10,8 +10,12 @@ class Orders extends Model
     /** @use HasFactory<\Database\Factories\OrdersFactory> */
     use HasFactory;
 
-    public function client(){
+    public function Products(){
         return $this->hasMany(Products::class, "orders_id");
-        return $this->belongsTo(Client::class);
+
+    }
+
+    public function Client(){
+        return $this->belongsTo(Client::class, "clients_id");
     }
 }

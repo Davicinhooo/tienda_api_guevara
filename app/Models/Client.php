@@ -10,7 +10,7 @@ class Client extends Model
     /** @use HasFactory<\Database\Factories\ClientFactory> */
     use HasFactory;
 
-    public function Order(){
+    public function Orders(){
         return $this->hasMany(Orders::class,"clients_id");
     }
 }
