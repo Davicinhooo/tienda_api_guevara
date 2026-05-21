@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Resources\CategoriesResource;
 use App\Http\Requests\StoreCategoriesRequest;
+use App\Http\Requests\UpdateCategoriesRequest;
 
 class CategoriesController extends Controller
 {
