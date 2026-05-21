@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class StoreProductsRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class StoreProductsRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +24,10 @@ class StoreProductsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" =>"required|string|max:255",
+            "description" =>"nullable|string",
+            "price" =>"nullable|integer",
+            "stock" =>"nullable|integer",
         ];
     }
 }
