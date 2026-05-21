@@ -18,6 +18,10 @@ class ProductsResource extends JsonResource
             "id" => $this->id,
             "name" => $this ->name,
             "description" => $this -> discription,
-        ]
+            "price" => $this ->price,
+            "stock" => $this -> stock,
+            "created_at" => $this ->created_at,
+            "update_at" => $this ->update_at,
+        ];
     }
 }

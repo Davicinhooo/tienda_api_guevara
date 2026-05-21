@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\StoreProductsRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductsResource;
 use App\Models\Products;
-use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
@@ -21,9 +21,9 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductsRequest $request)
     {
-        $products = Products::create($request->validate());
+        $products = Products::create($request->validated());
         return new ProductsResource($products);
     }
 
@@ -39,10 +39,10 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateProductsRequest $request, string $id)
     {
         $products = Products::findOrFail($id);
-        $products->update($request->validate());
+        $products->update($request->validated());
         return new ProductsResource($products);
     }
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrdersResource;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -12,7 +14,8 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Category::all();
+        return OrdersResource::collection($orders);
     }
 
     /**
@@ -20,7 +23,8 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orders = Orders::create($request->validated());
+        return new OrdersResource($orders);
     }
 
     /**
@@ -28,22 +32,28 @@ class OrdersController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return new CategoriesResource($category);
+    }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    //public function update(Request $request, string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->update($request->validated());
+        return new CategoriesResource($category);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    //public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return response()->json(null, 204);
     }
-}
+

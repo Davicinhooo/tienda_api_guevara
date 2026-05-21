@@ -25,7 +25,7 @@ class UpdateProductsRequest extends FormRequest
         return [
             "name" =>"required|string|max:255",
             "description" =>"nullable|string",
-            "price" =>"nullable|integer",
+            "price" =>"nullable|numeric|min:0",
             "stock" =>"nullable|integer",
         ];
     }
